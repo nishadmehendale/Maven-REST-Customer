@@ -1,49 +1,56 @@
 package com.demo.customer.model;
 
-import java.util.ArrayList;
-
-import org.springframework.stereotype.Component;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.demo.customer.pojo.Customer;
 
-@Component
 public class DAOImpl{
 	
-	private static ArrayList<Customer> customerList = new ArrayList<>();
+	private Map<Integer,Customer> customerMap = new HashMap<>();
 	
 
 	/* (non-Javadoc)
 	 * @see com.demo.customer.model.DAO#create(java.lang.String)
 	 */
 	
-	public void create(String name) {
-		Customer customer = new Customer(name);
+	public void create(Customer customer) {
 		addCustomer(customer);
 		
 	}
 
 	private void addCustomer(Customer customer) {
-		customerList.add(customer);
+		customerMap.put(customer.getCustomerId(),customer);
 		
 	}
 	
+
 
 	/* (non-Javadoc)
 	 * @see com.demo.customer.model.DAO#viewAllCustomers()
 	 */
 	
-	public ArrayList<Customer> viewAllCustomers() {
-		return customerList;
+	public Collection<Customer> viewAllCustomers() {
+		return customerMap.values();
 	}
 	
-	public void updateCustomer(int customerID, String name) {
-		
-		for(Customer a : customerList ) {
-			if(a.getCustomerId() == customerID) {
-				a.setName(name);
-			}
-		}
+	public void updateCustomer(Customer customer) {
 		
 	}
+		
+	public void deleteCustomer(int customerId) {
+//		Customer c = searchCustomer(name);
+//		System.out.println(c+"In delete");
+//		customerList.remove(c);
+//		for(Customer a : customerList ) {
+//			if(a.getCustomerId() == customerId) {
+//				System.out.println(a);
+//				customerList.remove(a);
+//				break;
+//			}
+//	}
+	}
+	
 	
 }

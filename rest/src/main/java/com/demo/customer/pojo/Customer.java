@@ -13,6 +13,10 @@ public class Customer {
 		this.customerId = ++custId;
 	}
 
+	public Customer() {
+		
+	}
+	
 	public Customer(String name) {
 		this.name = name;
 	}

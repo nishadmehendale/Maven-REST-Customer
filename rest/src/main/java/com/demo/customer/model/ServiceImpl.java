@@ -1,35 +1,36 @@
 package com.demo.customer.model;
 
-import java.util.ArrayList;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import java.util.Collection;
 
 import com.demo.customer.pojo.Customer;
 
-@Component
+
 public class ServiceImpl{
-	@Autowired
-	DAOImpl dao/* = new DAOImpl()*/;
+	
+	DAOImpl dao = new DAOImpl();
 	
 	/* (non-Javadoc)
 	 * @see com.demo.customer.model.Service#create(java.lang.String)
 	 */
 	
-	public void create(String name) {
-		dao.create(name);
+	public void create(Customer customer) {
+		dao.create(customer);
 	}
 	
 	/* (non-Javadoc)
 	 * @see com.demo.customer.model.Service#viewAllCustomers()
 	 */
 	
-	public ArrayList<Customer> viewAllCustomers() {
+	public Collection<Customer> viewAllCustomers() {
 		return dao.viewAllCustomers();
 		
 	}
 	
-	public void updateCustomer(int customerID, String name) {
-		dao.updateCustomer(customerID, name);
+	public void updateCustomer(Customer customer) {
+		dao.updateCustomer(customer);
+	}
+	
+	public void deleteCustomer(int customerId) {
+		dao.deleteCustomer(customerId);
 	}
 }
