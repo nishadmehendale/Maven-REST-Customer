@@ -1,24 +1,24 @@
 package com.demo.customer.pojo;
 
-public class Customer {
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.springframework.hateoas.ResourceSupport;
+
+@XmlRootElement
+public class Customer extends ResourceSupport{
 	private String name;
-	private final int customerId;
-	private static int custId;
+	private int customerId;
 	
-	static {
-		custId = 200;
-	}
 	
-	{
-		this.customerId = ++custId;
+	
+	public Customer(String name, int customerId) {
+		super();
+		this.name = name;
+		this.customerId = customerId;
 	}
 
 	public Customer() {
 		
-	}
-	
-	public Customer(String name) {
-		this.name = name;
 	}
 
 	@Override
